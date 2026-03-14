@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body text-secondary bg-background;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading uppercase tracking-wide;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block font-heading text-xl md:text-2xl uppercase tracking-wider bg-primary text-white px-8 py-3 rounded hover:bg-red-700 transition-all shadow-lg active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-block font-heading text-xl md:text-2xl uppercase tracking-wider bg-background text-secondary border-2 border-secondary px-8 py-3 rounded hover:bg-secondary hover:text-white transition-all shadow-lg active:scale-95;
+  }
+
+  .btn-accent {
+    @apply inline-block font-heading text-xl md:text-2xl uppercase tracking-wider bg-accent text-secondary px-8 py-3 rounded hover:bg-yellow-500 transition-all shadow-lg active:scale-95;
+  }
+
+  .section-title {
+    @apply text-5xl md:text-7xl font-bold mb-8 md:mb-12 text-center text-primary;
+  }
+}
+
+/* Scrollbar styles to look more modern */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff3b3b;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cc0000;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(var(--tw-rotate, 0deg));
+  }
+  100% {
+    transform: translateY(-20px) rotate(var(--tw-rotate, 0deg));
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}

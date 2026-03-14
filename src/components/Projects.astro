@@ -1,0 +1,135 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const projects = [
+  {
+    title: 'Rancho Kristoff',
+    description: 'Ranking interactivo de provincias cubanas con mapa en vivo, votación en tiempo real y 261K+ votos. ¡Representa tu provincia!',
+    status: 'Activo',
+    statusColor: 'bg-green-500',
+    icon: '🇨🇺',
+    tags: ['Mapa', 'Ranking', 'Votación', 'En Vivo'],
+    url: 'https://ranchokristoff.web.app/',
+    image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80'
+  },
+  {
+    title: 'Tortilla TV',
+    description: 'Video chat aleatorio estilo Omegle para la comunidad. Conecta 1v1 o en salas especiales con Kristoff como host.',
+    status: 'Activo',
+    statusColor: 'bg-green-500',
+    icon: '📺',
+    tags: ['Video Chat', '1v1', 'Comunidad', 'Live'],
+    url: 'https://www.tortillatv.com/',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80'
+  },
+  {
+    title: 'Kristoff Trivia',
+    description: '¿Cuánto sabes de Kristoff? Quiz interactivo con preguntas sobre sus videos, frases y momentos épicos.',
+    status: 'Próximamente',
+    statusColor: 'bg-blue-500',
+    icon: '🧠',
+    tags: ['Juego', 'Trivia', 'Interactivo'],
+    url: '#',
+    image: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=800&q=80'
+  }
+];
+---
+
+<section id="projects" class="py-24 bg-background relative">
+  <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#111 1px, transparent 1px); background-size: 25px 25px;"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl md:text-7xl font-heading text-primary uppercase tracking-widest mb-4">
+        Proyectos
+      </h2>
+      <p class="font-body text-xl text-gray-500 max-w-2xl mx-auto">
+        Apps y herramientas creadas por la comunidad para la comunidad. ¿Eres developer? <a href="/developers" class="text-primary hover:underline font-semibold">Únete al equipo →</a>
+      </p>
+    </div>
+
+    <!-- Visual Scroll Indicator -->
+    <div class="flex justify-end pr-4 sm:pr-0 mb-4">
+      <div class="inline-flex items-center text-gray-500 opacity-60 bg-gray-100 rounded-full p-2 animate-[pulse_1.5s_infinite]">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 mb-12 hide-scrollbar items-stretch -mx-4 px-4 sm:mx-0 sm:px-0">
+      {projects.map((project) => (
+        <div class="snap-center sm:snap-start shrink-0 w-[85vw] sm:w-[350px] lg:w-[400px] bg-white border border-gray-100 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col group overflow-hidden">
+          
+          <!-- Image Header -->
+          <div class="relative h-48 sm:h-56 w-full bg-gray-900 overflow-hidden">
+            <img 
+              src={project.image} 
+              alt={project.title} 
+              class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            
+            <div class="absolute top-4 right-4">
+              <span class={`${project.statusColor} text-white font-heading text-[10px] uppercase tracking-wider px-3 py-1 rounded-full shadow-lg`}>
+                {project.status}
+              </span>
+            </div>
+            
+            <div class="absolute bottom-4 left-4 flex items-center gap-3">
+              <span class="text-4xl drop-shadow-lg bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg">{project.icon}</span>
+              <h3 class="font-heading text-2xl text-white uppercase tracking-wide drop-shadow-md">
+                {project.title}
+              </h3>
+            </div>
+          </div>
+          
+          <div class="p-6 flex flex-col flex-1">
+            <!-- Description -->
+            <p class="font-body text-gray-500 text-sm leading-relaxed mb-6 flex-1">
+              {project.description}
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              {project.tags.map((tag) => (
+                <span class="bg-gray-100 text-gray-600 font-body text-xs px-2 py-0.5 rounded">{tag}</span>
+              ))}
+            </div>
+
+            <!-- CTA -->
+            {project.url !== '#' ? (
+              <a href={project.url} target="_blank" class="mt-auto bg-secondary hover:bg-primary text-white font-heading text-sm uppercase tracking-wider py-3 rounded-xl text-center transition-colors shadow-md">
+                Ver App
+              </a>
+            ) : (
+              <div class="mt-auto bg-gray-100 text-gray-400 font-heading text-sm uppercase tracking-wider py-3 rounded-xl text-center cursor-default">
+                Próximamente
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <style>
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+    </style>
+
+    <div class="text-center">
+      <a href="/projects" class="inline-flex items-center gap-2 font-heading text-xl uppercase tracking-wider text-secondary hover:text-primary transition-colors hover:translate-x-2 transform duration-300">
+        Ver todos los proyectos <span class="text-2xl">→</span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,63 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="collabs" class="py-24 bg-background">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-secondary text-white rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border-4 border-secondary">
+      
+      <!-- Left side: Info -->
+      <div class="lg:w-5/12 p-12 lg:p-16 bg-gradient-to-br from-secondary to-gray-900 flex flex-col justify-center relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-bl-full opacity-10"></div>
+        <h2 class="text-5xl lg:text-7xl font-heading text-primary uppercase tracking-widest mb-6 leading-none">
+          {t('collabs.title')}
+        </h2>
+        <p class="font-body text-xl leading-relaxed text-gray-300 mb-8 border-l-4 border-accent pl-4">
+          {t('collabs.description')}
+        </p>
+        
+        <div class="flex space-x-4 mb-4">
+          <span class="px-4 py-1 border-2 border-gray-700 rounded-full font-heading uppercase text-gray-400">Promociones</span>
+          <span class="px-4 py-1 border-2 border-accent text-accent rounded-full font-heading uppercase">Eventos</span>
+        </div>
+        <div class="flex space-x-4">
+          <span class="px-4 py-1 border-2 border-primary text-primary rounded-full font-heading uppercase">Campañas</span>
+        </div>
+      </div>
+
+      <!-- Right side: Form -->
+      <div class="lg:w-7/12 p-12 lg:p-16 bg-white text-secondary">
+        <form class="space-y-6" onsubmit="event.preventDefault(); alert('Formulario enviado! (Demostración)')">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block font-heading text-xl uppercase text-gray-700 mb-2">{t('collabs.form.name')}</label>
+              <input type="text" required class="w-full bg-gray-100 border-2 border-gray-200 rounded-lg px-4 py-3 font-body focus:outline-none focus:border-primary focus:ring-0 transition-colors">
+            </div>
+            <div>
+              <label class="block font-heading text-xl uppercase text-gray-700 mb-2">{t('collabs.form.email')}</label>
+              <input type="email" required class="w-full bg-gray-100 border-2 border-gray-200 rounded-lg px-4 py-3 font-body focus:outline-none focus:border-primary focus:ring-0 transition-colors">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block font-heading text-xl uppercase text-gray-700 mb-2">{t('collabs.form.brand')}</label>
+            <input type="text" class="w-full bg-gray-100 border-2 border-gray-200 rounded-lg px-4 py-3 font-body focus:outline-none focus:border-primary focus:ring-0 transition-colors">
+          </div>
+
+          <div>
+            <label class="block font-heading text-xl uppercase text-gray-700 mb-2">{t('collabs.form.message')}</label>
+            <textarea required rows="4" class="w-full bg-gray-100 border-2 border-gray-200 rounded-lg px-4 py-3 font-body focus:outline-none focus:border-primary focus:ring-0 transition-colors resize-none"></textarea>
+          </div>
+
+          <button type="submit" disabled class="w-full bg-gray-400 cursor-not-allowed text-white font-heading text-2xl py-4 flex justify-center items-center shadow-lg rounded-xl uppercase tracking-wider">
+            {t('collabs.form.submit')} (Próximamente)
+          </button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</section>

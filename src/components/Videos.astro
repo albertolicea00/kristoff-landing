@@ -1,0 +1,147 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { fetchLatestVideos } from '../utils/youtube';
+import { getTwitchStatus } from '../utils/social';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { mainVideos, vodVideos, podcastVideos } = await fetchLatestVideos();
+const isTwitchLive = await getTwitchStatus();
+---
+
+<section id="videos" class="py-24 bg-background">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Twitch Banner (Shows up if live) -->
+    {isTwitchLive ? (
+      <div class="mb-12 bg-purple-900 border-l-8 border-purple-500 rounded-lg p-6 shadow-xl flex flex-col md:flex-row justify-between items-center transform hover:scale-[1.01] transition-transform">
+        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+          <div class="relative">
+             <div class="w-4 h-4 bg-red-500 rounded-full animate-ping absolute"></div>
+             <div class="w-4 h-4 bg-red-500 rounded-full relative z-10"></div>
+          </div>
+          <div>
+            <h3 class="text-white font-heading text-2xl tracking-widest uppercase m-0">KRISTOFF ESTÁ EN DIRECTO AHORA</h3>
+            <p class="text-purple-200 font-body m-0">Entra pa' que goces con la locura en Twitch</p>
+          </div>
+        </div>
+        <a href="https://www.twitch.tv/kristoff_kriollo" target="_blank" class="bg-purple-600 hover:bg-purple-500 text-white font-heading text-xl px-8 py-3 rounded uppercase tracking-wider shadow-lg active:scale-95 transition-all w-full md:w-auto text-center">
+          Ver Directo
+        </a>
+      </div>
+    ) : null}
+
+    <!-- ===== Main Channel (@Kristoff9) ===== -->
+    <div class="flex justify-between items-end mb-12">
+      <div>
+        <h2 class="section-title mb-0 text-primary">{t('videos.title')}</h2>
+        <p class="font-body text-gray-400 text-sm mt-1">@Kristoff9 — Canal principal</p>
+      </div>
+      <a href="https://www.youtube.com/@Kristoff9" target="_blank" class="hidden md:flex items-center text-secondary font-heading text-xl uppercase tracking-wider hover:text-primary transition-colors hover:translate-x-2 transform duration-300">
+        Ver canal <span class="ml-2 text-2xl">→</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+      {(mainVideos || []).map((video) => (
+        <a href={video.link} target="_blank" rel="noopener noreferrer" class="group block cursor-pointer bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
+          <div class="relative w-full aspect-video bg-gray-900 border-b-4 border-primary">
+            <img src={video.thumbnail} alt={video.title} class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,59,59,0.6)]">
+                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-body font-bold text-base text-secondary line-clamp-2 leading-tight mb-2 group-hover:text-primary transition-colors">
+              {video.title}
+            </h3>
+            <span class="flex items-center font-medium bg-red-50 text-primary px-2 py-0.5 rounded text-xs font-body w-fit">
+              <svg class="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+              Kristoff
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- ===== VOD Channel (@Kristoffvod) ===== -->
+    {vodVideos && vodVideos.length > 0 && (
+      <>
+        <div class="flex justify-between items-end mb-12 border-t-2 border-gray-100 pt-16">
+          <div>
+            <h2 class="section-title mb-0 text-secondary">Kristoff <span class="text-accent">TV</span></h2>
+            <p class="font-body text-gray-400 text-sm mt-1">@Kristoffvod — Streams y momentos completos</p>
+          </div>
+          <a href="https://www.youtube.com/@Kristoffvod" target="_blank" class="hidden md:flex items-center text-secondary font-heading text-xl uppercase tracking-wider hover:text-primary transition-colors hover:translate-x-2 transform duration-300">
+            Ver canal <span class="ml-2 text-2xl">→</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {vodVideos.map((video) => (
+            <a href={video.link} target="_blank" rel="noopener noreferrer" class="group block cursor-pointer bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
+              <div class="relative w-full aspect-video bg-gray-900 border-b-4 border-accent">
+                <img src={video.thumbnail} alt={video.title} class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+                  <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,214,0,0.6)]">
+                    <svg class="w-8 h-8 text-secondary ml-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-body font-bold text-base text-secondary line-clamp-2 leading-tight mb-2 group-hover:text-accent transition-colors">
+                  {video.title}
+                </h3>
+                <span class="flex items-center font-medium bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded text-xs font-body w-fit">
+                  📺 TV
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </>
+    )}
+
+    <!-- ===== Podcast (@EstoNoEsUnPodcastMiami) ===== -->
+    {podcastVideos && podcastVideos.length > 0 && (
+      <>
+        <div class="flex justify-between items-end mb-12 border-t-2 border-gray-100 pt-16">
+          <div>
+            <h2 class="section-title mb-0 text-secondary">Podcast</h2>
+            <p class="font-body text-gray-400 text-sm mt-1">@EstoNoEsUnPodcastMiami</p>
+          </div>
+          <a href="https://www.youtube.com/@EstoNoEsUnPodcastMiami" target="_blank" class="hidden md:flex items-center text-secondary font-heading text-xl uppercase tracking-wider hover:text-primary transition-colors hover:translate-x-2 transform duration-300">
+            Escuchar podcast <span class="ml-2 text-2xl">→</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {podcastVideos.map((video) => (
+            <a href={video.link} target="_blank" rel="noopener noreferrer" class="group block cursor-pointer bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
+              <div class="relative w-full aspect-video bg-gray-900 border-b-4 border-secondary">
+                <img src={video.thumbnail} alt={video.title} class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+                  <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.6)]">
+                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-body font-bold text-base text-secondary line-clamp-2 leading-tight mb-2 group-hover:text-secondary transition-colors">
+                  {video.title}
+                </h3>
+                <span class="flex items-center font-medium bg-gray-100 text-secondary px-2 py-0.5 rounded text-xs font-body w-fit">
+                  🎙️ Podcast
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </>
+    )}
+
+  </div>
+</section>

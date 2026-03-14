@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Para Desarrolladores | Kristoff Kriollo">
+  <div class="min-h-screen bg-secondary pt-28 pb-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="text-6xl mb-4 block">🛠️</span>
+        <h1 class="text-4xl md:text-6xl font-heading text-primary uppercase tracking-widest mb-4">
+          Para Desarrolladores
+        </h1>
+        <p class="font-body text-xl text-gray-400">
+          Contribuye a la comunidad de Kristoff creando apps, herramientas y experiencias para los fans.
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-invert max-w-none space-y-8">
+
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+          <h2 class="text-2xl font-heading text-accent uppercase tracking-wide mb-4">¿Qué es esto?</h2>
+          <p class="font-body text-gray-300 leading-relaxed">
+            La comunidad de Kristoff Kriollo está creciendo y con ella la necesidad de herramientas, apps y experiencias digitales que conecten a los fans. Si eres desarrollador web, diseñador o creador de contenido técnico, puedes aportar tu talento creando un proyecto para la comunidad.
+          </p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+          <h2 class="text-2xl font-heading text-accent uppercase tracking-wide mb-4">¿Cómo funciona?</h2>
+          <ol class="font-body text-gray-300 leading-relaxed space-y-4 list-decimal list-inside">
+            <li><strong class="text-white">Propón tu idea:</strong> Piensa en una app, herramienta o experiencia que beneficie a la comunidad de Kristoff. Puede ser un juego, un chat, un generador de memes, una herramienta de clips, lo que se te ocurra.</li>
+            <li><strong class="text-white">Contáctanos:</strong> Envía tu propuesta con una descripción del proyecto, tecnologías que usarás y un timeline estimado. Usa el formulario de contacto o envía un DM por Instagram.</li>
+            <li><strong class="text-white">Revisión y aprobación:</strong> Revisaremos tu propuesta para asegurar que se alinea con los valores de la comunidad y la marca de Kristoff.</li>
+            <li><strong class="text-white">Te damos un subdominio:</strong> Una vez aprobado, te proporcionaremos acceso DNS para que alojes tu proyecto en un subdominio oficial (ej: <code class="bg-gray-800 px-2 py-0.5 rounded text-primary">tuapp.kristoffkriollo.com</code>).</li>
+            <li><strong class="text-white">Lanzamiento:</strong> Tu proyecto se agrega a la web oficial, se promociona en las redes de Kristoff y la comunidad lo usa y disfruta.</li>
+          </ol>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+          <h2 class="text-2xl font-heading text-accent uppercase tracking-wide mb-4">Requisitos técnicos</h2>
+          <ul class="font-body text-gray-300 leading-relaxed space-y-3">
+            <li class="flex items-start"><span class="text-primary mr-2 mt-1">✓</span> El proyecto debe ser una aplicación web (HTML/CSS/JS, React, Vue, Svelte, Astro, etc.)</li>
+            <li class="flex items-start"><span class="text-primary mr-2 mt-1">✓</span> Debe ser responsive y funcionar en móviles.</li>
+            <li class="flex items-start"><span class="text-primary mr-2 mt-1">✓</span> El código debe ser limpio y mantenible.</li>
+            <li class="flex items-start"><span class="text-primary mr-2 mt-1">✓</span> No debe recopilar datos personales sin consentimiento.</li>
+            <li class="flex items-start"><span class="text-primary mr-2 mt-1">✓</span> Debe respetar la imagen y marca de Kristoff Kriollo.</li>
+            <li class="flex items-start"><span class="text-primary mr-2 mt-1">✓</span> Preferiblemente open source (GitHub público).</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+          <h2 class="text-2xl font-heading text-accent uppercase tracking-wide mb-4">Hosting y subdominios</h2>
+          <p class="font-body text-gray-300 leading-relaxed mb-4">
+            Cada proyecto aprobado recibirá un subdominio bajo el dominio oficial de Kristoff. Tú eres responsable de:
+          </p>
+          <ul class="font-body text-gray-300 leading-relaxed space-y-2">
+            <li class="flex items-start"><span class="text-accent mr-2">•</span> Hostear y mantener tu propia aplicación (Vercel, Netlify, etc.)</li>
+            <li class="flex items-start"><span class="text-accent mr-2">•</span> Mantener el proyecto actualizado y funcional.</li>
+            <li class="flex items-start"><span class="text-accent mr-2">•</span> Responder a issues o feedback de la comunidad.</li>
+          </ul>
+          <p class="font-body text-gray-400 text-sm mt-4">
+            Nosotros proporcionamos los DNS records (CNAME) apuntando a tu servicio de hosting. El proyecto se linkea desde la web oficial.
+          </p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8">
+          <h2 class="text-2xl font-heading text-accent uppercase tracking-wide mb-4">Términos de uso</h2>
+          <div class="font-body text-gray-400 leading-relaxed space-y-3 text-sm">
+            <p>Al participar como desarrollador en la comunidad de Kristoff Kriollo, aceptas los siguientes términos:</p>
+            <p>1. <strong class="text-gray-300">Propiedad intelectual:</strong> El código que desarrolles es tuyo. Sin embargo, otorgas a Kristoff Kriollo una licencia no exclusiva para hostear, promocionar y distribuir tu proyecto bajo su dominio.</p>
+            <p>2. <strong class="text-gray-300">Contenido apropiado:</strong> Tu proyecto no debe contener contenido ofensivo, discriminatorio, ilegal o que dañe la reputación de Kristoff Kriollo o su comunidad.</p>
+            <p>3. <strong class="text-gray-300">Privacidad:</strong> Si tu app recopila datos de usuarios, debes cumplir con las leyes de privacidad aplicables (GDPR, CCPA) y tener una política de privacidad visible.</p>
+            <p>4. <strong class="text-gray-300">Discontinuación:</strong> Nos reservamos el derecho de remover el subdominio y el link a tu proyecto en cualquier momento si no cumple con estos términos o deja de funcionar.</p>
+            <p>5. <strong class="text-gray-300">Sin garantías:</strong> No garantizamos tráfico, monetización o exposición específica. La promoción dependerá de la calidad y utilidad del proyecto.</p>
+            <p>6. <strong class="text-gray-300">Modificaciones:</strong> Estos términos pueden cambiar. Te notificaremos por el canal de comunicación establecido.</p>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center pt-8">
+          <h3 class="font-heading text-3xl text-white uppercase tracking-wide mb-4">¿Listo para crear algo brutal?</h3>
+          <p class="font-body text-gray-400 mb-8">Manda tu propuesta y empezamos. 🚀</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#collabs" class="btn-primary inline-flex items-center justify-center gap-2">
+              📩 Enviar propuesta
+            </a>
+            <a href="/projects" class="btn-secondary inline-flex items-center justify-center gap-2">
+              Ver proyectos existentes
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</Layout>

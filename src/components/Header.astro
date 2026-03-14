@@ -1,0 +1,100 @@
+---
+import { getLangFromUrl, useTranslations, getRouteFromUrl } from '../i18n/utils';
+import { defaultLang } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const route = getRouteFromUrl(Astro.url);
+
+const otherLang = lang === defaultLang ? 'en' : defaultLang;
+const switchFlag = lang === defaultLang ? '🇺🇸' : '🇨🇺';
+const switchUrl = otherLang === defaultLang ? route : `/${otherLang}${route || ''}`;
+const baseUrl = lang === defaultLang ? '/' : `/${lang}/`;
+---
+
+<header class="fixed top-0 w-full bg-background/90 backdrop-blur-md z-50 border-b-2 border-primary shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <div class="flex-shrink-0 flex items-center gap-3">
+        <a href={lang === defaultLang ? '/' : `/${lang}`} class="flex items-center group gap-2">
+          <!-- Stylized Star Icon -->
+          <svg class="w-8 h-8 text-primary group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <span class="font-heading text-4xl text-primary font-bold tracking-widest group-hover:scale-105 transition-transform">
+            KRIOLLO
+          </span>
+        </a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href={`${baseUrl}#videos`} class="font-heading text-xl hover:text-primary transition-colors">{t('nav.videos')}</a>
+        <a href={`${baseUrl}#about`} class="font-heading text-xl hover:text-primary transition-colors">{t('nav.about')}</a>
+        <a href={`${baseUrl}#community`} class="font-heading text-xl hover:text-primary transition-colors">{t('nav.community')}</a>
+        <a href={`${baseUrl}#collabs`} class="btn-primary text-sm px-6 py-2">{t('nav.collabs')}</a>
+        
+        <!-- Language Switcher with Flag -->
+        <a href={switchUrl} class="text-3xl hover:scale-125 transition-transform" title={otherLang === 'en' ? 'Switch to English' : 'Cambiar a Español'}>
+          {switchFlag}
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex md:hidden items-center space-x-4">
+        <a href={switchUrl} class="text-2xl hover:scale-110 transition-transform">
+          {switchFlag}
+        </a>
+        <button id="mobile-menu-btn" class="text-secondary hover:text-primary focus:outline-none">
+          <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-background border-b-2 border-primary">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+      <a href={`${baseUrl}#videos`} class="mobile-link block px-3 py-2 text-2xl font-heading text-center hover:text-primary">{t('nav.videos')}</a>
+      <a href={`${baseUrl}#about`} class="mobile-link block px-3 py-2 text-2xl font-heading text-center hover:text-primary">{t('nav.about')}</a>
+      <a href={`${baseUrl}#community`} class="mobile-link block px-3 py-2 text-2xl font-heading text-center hover:text-primary">{t('nav.community')}</a>
+      <a href={`${baseUrl}#collabs`} class="mobile-link block px-3 py-2 text-2xl font-heading text-center text-primary">{t('nav.collabs')}</a>
+    </div>
+  </div>
+</header>
+
+<!-- Fixed Social Sidebar (Right) -->
+<div class="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-3 pr-3">
+  <a href="https://www.youtube.com/@Kristoff9" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-secondary/90 backdrop-blur-sm border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary hover:scale-110 transition-all shadow-lg" title="YouTube">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" /></svg>
+  </a>
+  <a href="https://www.instagram.com/kristoff_kriollo/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-secondary/90 backdrop-blur-sm border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-pink-500 hover:border-pink-500 hover:scale-110 transition-all shadow-lg" title="Instagram">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 0 1 1.772 1.153 4.902 4.902 0 0 1 1.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 0 1-1.153 1.772 4.902 4.902 0 0 1-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 0 1-1.772-1.153 4.902 4.902 0 0 1-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 0 1 1.153-1.772A4.902 4.902 0 0 1 5.469 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63z" clip-rule="evenodd" /></svg>
+  </a>
+  <a href="https://www.tiktok.com/@kristoff_y" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-secondary/90 backdrop-blur-sm border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:border-white hover:scale-110 transition-all shadow-lg" title="TikTok">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+  </a>
+  <a href="https://www.twitch.tv/kristoff_kriollo" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-secondary/90 backdrop-blur-sm border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-purple-400 hover:border-purple-400 hover:scale-110 transition-all shadow-lg" title="Twitch">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>
+  </a>
+</div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const links = document.querySelectorAll('.mobile-link');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+    
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
+    });
+  }
+</script>

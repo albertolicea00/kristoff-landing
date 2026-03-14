@@ -1,0 +1,216 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="support" class="py-24 bg-secondary text-white border-y-8 border-primary relative overflow-hidden">
+  <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#FF3B3B 2px, transparent 2px); background-size: 40px 40px;"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl md:text-7xl font-heading text-white uppercase tracking-widest mb-4">
+        Apoya al <span class="text-primary">Kriollo</span>
+      </h2>
+      <p class="font-body text-xl text-gray-400 max-w-2xl mx-auto">
+        Únete al canal de YouTube como miembro o tira bits en Twitch pa' apoyar al asere. ¡Cada granito cuenta!
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      
+      <!-- YouTube Memberships -->
+      <div class="bg-gray-900 border-2 border-primary rounded-2xl p-8 md:p-12 shadow-2xl relative transform hover:-translate-y-2 transition-transform duration-300">
+        <div class="absolute -top-6 -right-6 w-16 h-16 bg-primary rounded-full flex items-center justify-center transform rotate-12 shadow-lg">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+        </div>
+        
+        <h3 class="text-3xl font-heading text-white mb-2 uppercase tracking-wide">Únete al Canal</h3>
+        <p class="text-gray-400 font-body mb-8">Hazte miembro del canal oficial de Kristoff en YouTube y desbloquea beneficios exclusivos.</p>
+        
+        <div class="space-y-6">
+          <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+             <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-4">
+               <h4 class="text-2xl font-heading text-primary uppercase">Aseres</h4>
+               <span class="font-body font-bold text-xl text-white">2.99 US$/mes</span>
+             </div>
+             <ul class="text-gray-300 font-body space-y-2 text-sm">
+               <li class="flex items-start"><span class="text-primary mr-2">✓</span> Insignias de fidelización en comentarios y chat</li>
+               <li class="flex items-start"><span class="text-primary mr-2">✓</span> Emojis personalizados (fuego, ñinga, etc.)</li>
+             </ul>
+          </div>
+          
+          <div class="bg-gray-800 p-6 rounded-xl border-2 border-accent transform scale-[1.03] shadow-xl relative">
+             <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-secondary font-heading text-xs px-3 py-1 rounded uppercase tracking-wider">Más Popular</div>
+             <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-4 mt-2">
+               <h4 class="text-2xl font-heading text-accent uppercase">Bestias</h4>
+               <span class="font-body font-bold text-xl text-white">6.99 US$/mes</span>
+             </div>
+             <ul class="text-gray-300 font-body space-y-2 text-sm">
+               <li class="flex items-start"><span class="text-accent mr-2">✓</span> Todo lo del nivel Aseres</li>
+               <li class="flex items-start"><span class="text-accent mr-2">✓</span> Acceso anticipado a videos nuevos</li>
+               <li class="flex items-start"><span class="text-accent mr-2">✓</span> Menciones, fotos y videos exclusivos</li>
+               <li class="flex items-start"><span class="text-accent mr-2">✓</span> Transmisiones en vivo exclusivas</li>
+             </ul>
+          </div>
+          
+          <div class="bg-gray-800 p-6 rounded-xl border border-primary">
+             <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-4">
+               <h4 class="text-2xl font-heading text-white uppercase">Machines</h4>
+               <span class="font-body font-bold text-xl text-white">24.99 US$/mes</span>
+             </div>
+             <ul class="text-gray-300 font-body space-y-2 text-sm">
+               <li class="flex items-start"><span class="text-primary mr-2">✓</span> Todo lo de los niveles anteriores</li>
+               <li class="flex items-start"><span class="text-primary mr-2">✓</span> Partidas de juegos contigo</li>
+               <li class="flex items-start"><span class="text-primary mr-2">✓</span> Contacto en redes y respuesta prioritaria</li>
+               <li class="flex items-start"><span class="text-primary mr-2">✓</span> Chat en vivo exclusivo para miembros</li>
+             </ul>
+          </div>
+        </div>
+        
+        <a href="https://www.youtube.com/@Kristoff9/join" target="_blank" class="mt-8 btn-primary w-full text-center flex justify-center items-center gap-2">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+          Unirme al Canal
+        </a>
+      </div>
+      
+      <!-- Twitch Support -->
+      <div class="bg-purple-900 border-2 border-purple-500 rounded-2xl p-8 md:p-12 shadow-2xl relative transform hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+        <div class="absolute -top-6 -right-6 w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center transform -rotate-12 shadow-lg">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>
+        </div>
+        
+        <div>
+          <h3 class="text-3xl font-heading text-white mb-2 uppercase tracking-wide">Apoya en Twitch</h3>
+          <p class="text-purple-200 font-body mb-8">Suscríbete al canal de Twitch, tira bits en los streams y apoya directo al Kriollo.</p>
+          
+          <div class="bg-purple-950/50 p-6 rounded-xl border border-purple-700 mb-4">
+            <h4 class="text-xl font-heading text-white uppercase mb-4 text-shadow border-b border-purple-800 pb-2">Beneficios VIP</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="flex items-start gap-3">
+                 <div class="w-10 h-10 bg-purple-800 rounded-full flex justify-center items-center text-xl shrink-0 border border-purple-500 shadow-md">🗿</div>
+                 <div>
+                   <p class="text-white font-heading tracking-wide mb-0.5 mt-1 text-sm">Emotes Únicos</p>
+                   <p class="text-gray-300 font-body text-[10px] leading-tight flex-1">Usa las frases del Kriollo en todos lados.</p>
+                 </div>
+              </div>
+              <div class="flex items-start gap-3">
+                 <div class="w-10 h-10 bg-purple-800 rounded-full flex justify-center items-center text-xl shrink-0 border border-purple-500 shadow-md">🚫</div>
+                 <div>
+                   <p class="text-white font-heading tracking-wide mb-0.5 mt-1 text-sm">0 Anuncios</p>
+                   <p class="text-gray-300 font-body text-[10px] leading-tight flex-1">La directa limpia, sin interrupciones.</p>
+                 </div>
+              </div>
+              <div class="flex items-start gap-3">
+                 <div class="w-10 h-10 bg-purple-800 rounded-full flex justify-center items-center text-xl shrink-0 border border-purple-500 shadow-md">👑</div>
+                 <div>
+                   <p class="text-white font-heading tracking-wide mb-0.5 mt-1 text-sm">Emblema Sub</p>
+                   <p class="text-gray-300 font-body text-[10px] leading-tight flex-1">Destaca en el chat como oficial.</p>
+                 </div>
+              </div>
+              <div class="flex items-start gap-3">
+                 <div class="w-10 h-10 bg-purple-800 rounded-full flex justify-center items-center text-xl shrink-0 border border-purple-500 shadow-md">✨</div>
+                 <div>
+                   <p class="text-white font-heading tracking-wide mb-0.5 mt-1 text-sm">Puntos Extra</p>
+                   <p class="text-gray-300 font-body text-[10px] leading-tight flex-1">Multiplicador x1.2 en los puntos de canal.</p>
+                 </div>
+              </div>
+            </div>
+            
+            <!-- Meta de Subscriptores (Simulada para visual) -->
+            <div class="mt-6 pt-4 border-t border-purple-800/50">
+              <div class="flex justify-between text-xs font-heading mb-1 text-purple-200">
+                <span>Meta de Subs</span>
+                <span>85%</span>
+              </div>
+              <div class="w-full bg-purple-900 rounded-full h-3 border border-purple-700 overflow-hidden relative">
+                <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2.5 rounded-full" style="width: 85%"></div>
+                <!-- Shimmer effect -->
+                <div class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden rounded-full pointer-events-none">
+                  <div class="w-full h-full bg-white opacity-20 transform -skew-x-12 translate-x-[-150%] animate-[shimmer_3s_infinite]"></div>
+                </div>
+              </div>
+              <p class="text-[10px] text-center text-gray-400 mt-2 font-body font-bold tracking-widest uppercase">APOYA EL DIRECTO DE HOY 🎉</p>
+            </div>
+            
+            <!-- Top Bitters (Mock) -->
+            <div class="mt-4 pt-4 border-t border-purple-800/50">
+              <h5 class="text-xs font-heading mb-3 text-purple-200 uppercase tracking-widest text-center">🏆 Top Bits de la Semana</h5>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-xs bg-purple-900/50 p-1.5 rounded border border-purple-800/30">
+                  <div class="flex items-center gap-2">
+                    <span class="text-yellow-400 font-bold w-4 text-center">1</span>
+                    <span class="text-white font-body truncate max-w-[100px]">El_Ruso_Habana</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <span class="text-purple-300 font-bold">5,000</span>
+                    <svg class="w-3.5 h-3.5 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between text-xs bg-purple-900/30 p-1.5 rounded border border-purple-800/20">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-400 font-bold w-4 text-center">2</span>
+                    <span class="text-white font-body truncate max-w-[100px]">Marta_Miami</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <span class="text-purple-300 font-bold">2,500</span>
+                    <svg class="w-3.5 h-3.5 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between text-xs bg-purple-900/10 p-1.5 rounded border border-purple-800/10">
+                  <div class="flex items-center gap-2">
+                    <span class="text-orange-400 font-bold w-4 text-center">3</span>
+                    <span class="text-white font-body truncate max-w-[100px]">Yosvani_ElMio</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <span class="text-purple-300 font-bold">1,000</span>
+                    <svg class="w-3.5 h-3.5 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
+            <!-- Prime Gaming Notice -->
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 p-3 rounded-xl border border-gray-600 flex items-start gap-3 shadow-inner h-full">
+              <div class="bg-white p-1.5 rounded flex-shrink-0 mt-0.5 shadow-sm">
+                 <svg class="w-5 h-5 text-[#00A8E1]" fill="currentColor" viewBox="0 0 24 24"><path d="M11.906 18.069C8.36 18.069 5.378 16.59 2 13.5v3.13C5.748 19.347 8.981 20 11.968 20c7.042 0 10.021-4.048 10.021-4.048-2.671 2.375-6.524 2.117-10.083 2.117v.001z"/><path d="M20.306 13.918c-.854-1.285-2.001-2.92-2.14-3.136-.184-.199-.399-.215-.69-.029l-1.954 1.252-2.484-4.275c-.244-.415-.55-.478-.857-.14l-2.025 2.226-1.503-1.638c-.352-.382-.734-.367-.98.056l-3.326 5.894s3.784 2.127 7.749 2.127c4.613 0 8.21-2.336 8.21-2.336z"/></svg>
+              </div>
+              <div>
+                 <p class="text-white font-heading text-[12px] mb-0.5 uppercase tracking-wide">Gratis con Prime</p>
+                 <p class="text-gray-400 font-body text-[10px] leading-snug">Únete 1 vez al mes sin costo si tienes Amazon Prime.</p>
+              </div>
+            </div>
+            
+            <!-- Bits Notice -->
+            <div class="bg-gradient-to-r from-purple-800 to-indigo-900 p-3 rounded-xl border border-purple-600 flex items-start gap-3 shadow-inner h-full">
+              <div class="bg-purple-900 p-1.5 rounded flex-shrink-0 mt-0.5 shadow-sm border border-purple-400">
+                 <svg class="w-5 h-5 text-purple-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 17.5L4.5 12 12 4.5l7.5 7.5L12 19.5z"/><path d="M12 7l-5 5h3v3h4v-3h3l-5-5z"/></svg>
+              </div>
+              <div>
+                 <p class="text-white font-heading text-[12px] mb-0.5 uppercase tracking-wide">Tira Bits en Vivo</p>
+                 <p class="text-purple-200 font-body text-[10px] leading-snug">Donaciones directas durante el stream. ¡Manda alertas!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 w-full">
+          <a href="https://www.twitch.tv/subs/kristoff_kriollo" target="_blank" class="flex-1 bg-purple-600 hover:bg-purple-500 text-white font-heading text-xl uppercase tracking-wider px-8 py-4 rounded transition-all shadow-lg active:scale-95 text-center flex justify-center items-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>
+            Ir a Twitch
+          </a>
+          
+          <a href="https://www.twitch.tv/kristoff_kriollo" target="_blank" class="flex-none bg-purple-900 hover:bg-purple-800 text-purple-200 border border-purple-500 font-heading text-lg uppercase tracking-wider px-6 py-4 rounded transition-all shadow-md active:scale-95 text-center flex justify-center items-center gap-2">
+            <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 17.5L4.5 12 12 4.5l7.5 7.5L12 19.5z"/><path d="M12 7l-5 5h3v3h4v-3h3l-5-5z"/></svg>
+            Mandar Bits
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

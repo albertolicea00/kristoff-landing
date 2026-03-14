@@ -1,0 +1,209 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+
+// The text is managed from i18n/ui.ts directly since editing is disabled
+let bioContent = t('about.description');
+---
+
+<section id="about" class="py-24 bg-secondary text-white relative overflow-hidden" data-sb-url={supabaseUrl} data-sb-key={supabaseKey}>
+  <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+  <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-accent rounded-full filter blur-[100px] opacity-20"></div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-5xl md:text-7xl font-heading text-primary mb-4 tracking-wide drop-shadow-md">
+        {t('about.title')}
+      </h2>
+      <div class="w-24 h-2 bg-accent mx-auto mb-4"></div>
+      <p class="text-gray-500 font-body text-sm">
+        Si eres fan, deja tu huella: edita esta sección y pon un dato épico sobre mí. Jumm 😎
+      </p>
+    </div>
+
+    <!-- Editable Bio Card -->
+    <div class="bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 md:p-12 shadow-2xl relative group">
+      
+      <!-- View Mode -->
+      <div id="bio-view">
+        <p id="bio-text" class="font-body text-xl md:text-2xl leading-relaxed text-gray-200 whitespace-pre-line">
+          {bioContent}
+        </p>
+        
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <!-- 
+          <div class="flex items-center space-x-4">
+            <span class="font-heading text-4xl text-gray-600 transform -rotate-6">Kristoff</span>
+            <span class="text-gray-600 font-body text-sm" id="bio-last-edit"></span>
+          </div>
+           -->
+          <button 
+            id="bio-edit-btn"
+            class="hidden flex items-center gap-2 bg-gray-800 hover:bg-gray-700 border border-gray-600 hover:border-primary text-gray-300 hover:text-white font-heading text-sm uppercase tracking-wider px-5 py-2.5 rounded-xl transition-all active:scale-95"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            Editar
+          </button>
+        </div>
+      </div>
+
+      <!-- Edit Mode (hidden by default) -->
+      <div id="bio-edit" class="hidden">
+        <textarea 
+          id="bio-textarea"
+          rows="8"
+          maxlength="1000"
+          class="w-full bg-gray-800 border border-gray-600 rounded-xl p-6 text-gray-200 font-body text-lg leading-relaxed focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none transition-colors"
+          placeholder="Escribe sobre Kristoff..."
+        ></textarea>
+        <div class="flex items-center justify-between mt-4">
+          <span id="bio-char-count" class="text-gray-500 font-body text-sm">0/1000</span>
+          <div class="flex gap-3">
+            <button 
+              id="bio-cancel-btn"
+              class="bg-gray-800 hover:bg-gray-700 border border-gray-600 text-gray-300 font-heading text-sm uppercase tracking-wider px-5 py-2.5 rounded-xl transition-all active:scale-95"
+            >
+              Cancelar
+            </button>
+            <button 
+              id="bio-save-btn"
+              class="bg-primary hover:bg-red-600 text-white font-heading text-sm uppercase tracking-wider px-6 py-2.5 rounded-xl transition-all active:scale-95 shadow-lg flex items-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Guardar
+            </button>
+          </div>
+        </div>
+        <p id="bio-error" class="text-red-400 font-body text-sm mt-2 hidden"></p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const aboutSection = document.getElementById('about');
+  const SB_URL = aboutSection?.dataset.sbUrl || '';
+  const SB_KEY = aboutSection?.dataset.sbKey || '';
+  const sbConfigured = SB_URL.length > 10 && SB_KEY.length > 10;
+
+  const COOLDOWN_KEY = 'bio_last_edit_ts';
+
+  function canEditToday(): boolean {
+    const lastEdit = localStorage.getItem(COOLDOWN_KEY);
+    if (!lastEdit) return true;
+    const lastDate = new Date(parseInt(lastEdit));
+    const now = new Date();
+    return lastDate.toDateString() !== now.toDateString();
+  }
+
+  const bioView = document.getElementById('bio-view');
+  const bioEdit = document.getElementById('bio-edit');
+  const bioText = document.getElementById('bio-text');
+  const bioTextarea = document.getElementById('bio-textarea') as HTMLTextAreaElement;
+  const editBtn = document.getElementById('bio-edit-btn');
+  const cancelBtn = document.getElementById('bio-cancel-btn');
+  const saveBtn = document.getElementById('bio-save-btn');
+  const charCount = document.getElementById('bio-char-count');
+  const errorEl = document.getElementById('bio-error');
+
+  // Enter edit mode
+  if (editBtn) {
+    editBtn.addEventListener('click', () => {
+      if (!canEditToday()) {
+        if (errorEl) {
+          errorEl.textContent = '⏰ Ya editaste hoy. Vuelve mañana pa\' meter mano otra vez.';
+          errorEl.classList.remove('hidden');
+          setTimeout(() => errorEl.classList.add('hidden'), 4000);
+        }
+        return;
+      }
+      if (bioTextarea && bioText) {
+        bioTextarea.value = bioText.textContent?.trim() || '';
+        updateCharCount();
+      }
+      bioView?.classList.add('hidden');
+      bioEdit?.classList.remove('hidden');
+      bioTextarea?.focus();
+    });
+  }
+
+  // Cancel
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', () => {
+      bioEdit?.classList.add('hidden');
+      bioView?.classList.remove('hidden');
+      if (errorEl) errorEl.classList.add('hidden');
+    });
+  }
+
+  // Char counter
+  function updateCharCount() {
+    if (charCount && bioTextarea) {
+      charCount.textContent = `${bioTextarea.value.length}/1000`;
+    }
+  }
+  bioTextarea?.addEventListener('input', updateCharCount);
+
+  // Save
+  if (saveBtn) {
+    saveBtn.addEventListener('click', async () => {
+      if (!bioTextarea || !bioText) return;
+      
+      const newContent = bioTextarea.value.trim();
+      if (newContent.length < 10) {
+        if (errorEl) {
+          errorEl.textContent = 'Escribe al menos 10 caracteres, asere.';
+          errorEl.classList.remove('hidden');
+        }
+        return;
+      }
+
+      saveBtn.textContent = 'Guardando...';
+      (saveBtn as HTMLButtonElement).disabled = true;
+
+      let saved = false;
+      if (sbConfigured) {
+        try {
+          const res = await fetch(`${SB_URL}/rest/v1/bio?id=eq.1`, {
+            method: 'PATCH',
+            headers: {
+              'apikey': SB_KEY,
+              'Authorization': `Bearer ${SB_KEY}`,
+              'Content-Type': 'application/json',
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({ content: newContent, last_edited_at: new Date().toISOString() })
+          });
+          saved = res.ok;
+        } catch(e) { saved = false; }
+      } else {
+        saved = true; // demo mode
+      }
+
+      if (saved) {
+        bioText.textContent = newContent;
+        localStorage.setItem(COOLDOWN_KEY, Date.now().toString());
+        bioEdit?.classList.add('hidden');
+        bioView?.classList.remove('hidden');
+        if (errorEl) errorEl.classList.add('hidden');
+      } else {
+        if (errorEl) {
+          errorEl.textContent = 'Error guardando. Intenta de nuevo.';
+          errorEl.classList.remove('hidden');
+        }
+      }
+
+      saveBtn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Guardar';
+      (saveBtn as HTMLButtonElement).disabled = false;
+    });
+  }
+</script>
