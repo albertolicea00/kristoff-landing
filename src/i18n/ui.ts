@@ -11,7 +11,7 @@ export const ui = {
     'nav.about': 'Sobre Mí',
     'nav.community': 'Comunidad',
     'nav.collabs': 'Trabaja Conmigo',
-    'hero.title': 'Humor sin filtro 🇨🇺',
+    'hero.title': 'El animaaaaal',
     'hero.subtitle': 'Risas, historias y realidades del cubano en el mundo.',
     'hero.cta': 'Ver mis videos',
 
@@ -44,7 +44,7 @@ export const ui = {
     'nav.about': 'About Me',
     'nav.community': 'Community',
     'nav.collabs': 'Work With Me',
-    'hero.title': 'Lesviano y Astroboy 🇨🇺',
+    'hero.title': 'El animaaaaal',
     'hero.subtitle': 'Laughs, stories, and the reality of Cubans around the world.',
     'hero.cta': 'Watch my videos',
 

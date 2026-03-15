@@ -58,10 +58,22 @@ const isTwitchLive = await getTwitchStatus();
             <h3 class="font-body font-bold text-base text-secondary line-clamp-2 leading-tight mb-2 group-hover:text-primary transition-colors">
               {video.title}
             </h3>
-            <span class="flex items-center font-medium bg-red-50 text-primary px-2 py-0.5 rounded text-xs font-body w-fit">
-              <svg class="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-              Kristoff
-            </span>
+            <div class="flex flex-wrap gap-2">
+              <span class="flex items-center font-medium bg-red-50 text-primary px-2 py-0.5 rounded text-xs font-body w-fit">
+                <svg class="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                Kristoff
+              </span>
+              {video.isUpcoming && (
+                <span class="bg-blue-600 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider animate-pulse">
+                  Próximamente: {video.premiereTime}
+                </span>
+              )}
+              {video.isMembersOnly && (
+                <span class="bg-green-600 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">
+                  Solo Miembros
+                </span>
+              )}
+            </div>
           </div>
         </a>
       ))}
@@ -95,9 +107,21 @@ const isTwitchLive = await getTwitchStatus();
                 <h3 class="font-body font-bold text-base text-secondary line-clamp-2 leading-tight mb-2 group-hover:text-accent transition-colors">
                   {video.title}
                 </h3>
-                <span class="flex items-center font-medium bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded text-xs font-body w-fit">
-                  📺 TV
-                </span>
+                <div class="flex flex-wrap gap-2">
+                  <span class="flex items-center font-medium bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded text-xs font-body w-fit">
+                    📺 TV
+                  </span>
+                  {video.isUpcoming && (
+                    <span class="bg-blue-600 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider animate-pulse">
+                      {video.premiereTime}
+                    </span>
+                  )}
+                  {video.isMembersOnly && (
+                    <span class="bg-green-600 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">
+                      Solo Miembros
+                    </span>
+                  )}
+                </div>
               </div>
             </a>
           ))}
@@ -125,8 +149,15 @@ const isTwitchLive = await getTwitchStatus();
           <div class="flex-1 text-center md:text-left">
             <div class="inline-flex items-center gap-2 mb-4 bg-secondary/10 px-3 py-1 rounded-full border border-secondary/10">
               <span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
-              <span class="text-secondary text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest">Último del Podcast</span>
+              <span class="text-secondary text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest">
+                {podcastVideos[0].isUpcoming ? 'Próximo Estreno' : podcastVideos[0].isMembersOnly ? 'Contenido Exclusivo' : 'Último del Podcast'}
+              </span>
             </div>
+            {podcastVideos[0].isUpcoming && (
+              <div class="mb-4 text-secondary/60 text-xs font-heading font-bold uppercase tracking-widest">
+                Se estrena: {podcastVideos[0].premiereTime}
+              </div>
+            )}
             
             <h3 class="text-2xl md:text-3xl font-heading font-bold text-secondary mb-4 leading-tight">
               {podcastVideos[0].title}

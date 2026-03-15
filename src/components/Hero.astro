@@ -35,7 +35,7 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
       KRISTOFF <span class="text-primary block md:inline">KRIOLLO</span>
     </h1>
     
-    <h2 class="text-2xl md:text-4xl text-accent font-heading mb-6 rotate-[-2deg] transform">
+    <h2 id="hero-slogan" class="text-2xl md:text-4xl text-accent font-heading mb-6 rotate-[-2deg] transform transition-opacity duration-500">
       {t('hero.title')}
     </h2>
     
@@ -273,6 +273,22 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
       if (btn) btn.textContent = ok ? '✓ Enviado' : 'Enviar';
       setTimeout(() => { if (btn) btn.textContent = 'Enviar'; }, 2000);
     });
+  }
+
+  // ===== DYNAMIC SLOGAN =====
+  const sloganEl = document.getElementById('hero-slogan');
+  const slogans = ['El animaaaaal', 'El astroboy'];
+  let currentSloganIndex = 0;
+
+  if (sloganEl) {
+    setInterval(() => {
+      sloganEl.style.opacity = '0';
+      setTimeout(() => {
+        currentSloganIndex = (currentSloganIndex + 1) % slogans.length;
+        sloganEl.textContent = slogans[currentSloganIndex];
+        sloganEl.style.opacity = '1';
+      }, 500);
+    }, 3000);
   }
 
   initNotes();
