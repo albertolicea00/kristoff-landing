@@ -44,7 +44,7 @@ export const ui = {
     'nav.about': 'About Me',
     'nav.community': 'Community',
     'nav.collabs': 'Work With Me',
-    'hero.title': 'Unfiltered Humor 🇨🇺',
+    'hero.title': 'Lesviano y Astroboy 🇨🇺',
     'hero.subtitle': 'Laughs, stories, and the reality of Cubans around the world.',
     'hero.cta': 'Watch my videos',
 

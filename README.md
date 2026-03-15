@@ -1,4 +1,4 @@
-# Kristoff Kriollo | Unfiltered Humor 🇨🇺
+# Kristoff Kriollo | Landing Page 🇨🇺
 
 <div align="center">
   <img src="https://yt3.ggpht.com/_nwkuUvKJT-ztrUNH1bymp7trvZfDXp07UVV7NJNv-Zfws0Wpnlla9nExFRhYSVNAMeKxt9AHA=s800-c-k-c0x00ffffff-no-rj" alt="Kristoff Kriollo Logo" width="200" style="border-radius: 50%"/>
