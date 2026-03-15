@@ -97,7 +97,7 @@ export async function fetchLatestVideos() {
     const [mainVideos, vodVideos, podcastVideos] = await Promise.all([
       scrapeChannelVideos('https://www.youtube.com/@Kristoff9/videos', 'Kristoff', 3),
       scrapeChannelVideos('https://www.youtube.com/@Kristoffvod/videos', 'Kristoff TV', 3),
-      scrapeChannelVideos('https://www.youtube.com/@EstoNoEsUnPodcastMiami/videos', 'Podcast', 3)
+      scrapeChannelVideos('https://www.youtube.com/@EstoNoEsUnPodcastMiami/videos', 'Podcast', 1)
     ]);
 
     return { mainVideos, vodVideos, podcastVideos };

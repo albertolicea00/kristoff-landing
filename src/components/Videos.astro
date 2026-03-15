@@ -105,42 +105,48 @@ const isTwitchLive = await getTwitchStatus();
       </>
     )}
 
-    <!-- ===== Podcast (@EstoNoEsUnPodcastMiami) ===== -->
+    <!-- ===== Podcast (@EstoNoEsUnPodcastMiami) Compact ===== -->
     {podcastVideos && podcastVideos.length > 0 && (
-      <>
-        <div class="flex justify-between items-end mb-12 border-t-2 border-gray-100 pt-16">
-          <div>
-            <h2 class="section-title mb-0 text-secondary">Podcast</h2>
-            <p class="font-body text-gray-400 text-sm mt-1">@EstoNoEsUnPodcastMiami</p>
-          </div>
-          <a href="https://www.youtube.com/@EstoNoEsUnPodcastMiami" target="_blank" class="hidden md:flex items-center text-secondary font-heading text-xl uppercase tracking-wider hover:text-primary transition-colors hover:translate-x-2 transform duration-300">
-            Escuchar podcast <span class="ml-2 text-2xl">→</span>
-          </a>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {podcastVideos.map((video) => (
-            <a href={video.link} target="_blank" rel="noopener noreferrer" class="group block cursor-pointer bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
-              <div class="relative w-full aspect-video bg-gray-900 border-b-4 border-secondary">
-                <img src={video.thumbnail} alt={video.title} class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" loading="lazy" />
-                <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
-                  <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.6)]">
-                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
-                  </div>
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="font-body font-bold text-base text-secondary line-clamp-2 leading-tight mb-2 group-hover:text-secondary transition-colors">
-                  {video.title}
-                </h3>
-                <span class="flex items-center font-medium bg-gray-100 text-secondary px-2 py-0.5 rounded text-xs font-body w-fit">
-                  🎙️ Podcast
-                </span>
+      <div class="mt-20 border-t border-gray-100 pt-12">
+        <div class="bg-secondary/5 rounded-3xl p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 border border-gray-100 hover:shadow-xl transition-all duration-500">
+          <!-- Thumbnail side -->
+          <div class="w-full md:w-2/5 aspect-video rounded-2xl overflow-hidden shadow-2xl flex-shrink-0 group relative">
+            <a href={podcastVideos[0].link} target="_blank" rel="noopener noreferrer" class="block w-full h-full">
+              <img src={podcastVideos[0].thumbnail} alt={podcastVideos[0].title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-secondary/20 group-hover:bg-secondary/40 flex items-center justify-center transition-colors">
+                 <div class="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <svg class="w-7 h-7 text-secondary ml-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                 </div>
               </div>
             </a>
-          ))}
+          </div>
+          
+          <!-- Info side -->
+          <div class="flex-1 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 mb-4 bg-secondary/10 px-3 py-1 rounded-full border border-secondary/10">
+              <span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+              <span class="text-secondary text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest">Último del Podcast</span>
+            </div>
+            
+            <h3 class="text-2xl md:text-3xl font-heading font-bold text-secondary mb-4 leading-tight">
+              {podcastVideos[0].title}
+            </h3>
+            
+            <p class="font-body text-gray-500 text-sm mb-6 max-w-lg hidden md:block">
+              No te pierdas el episodio más reciente de "Esto No Es Un Podcast Miami". Kristoff y el equipo debatiendo lo que nadie se atreve.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center gap-5">
+              <a href={podcastVideos[0].link} target="_blank" class="w-full sm:w-auto bg-secondary hover:bg-black text-white px-8 py-3.5 rounded-xl font-heading text-sm uppercase tracking-wider shadow-lg hover:shadow-secondary/20 transition-all active:scale-95">
+                Ver Episodio
+              </a>
+              <a href="https://www.youtube.com/@EstoNoEsUnPodcastMiami" target="_blank" class="text-secondary/60 hover:text-secondary text-xs font-heading underline underline-offset-8 uppercase tracking-widest transition-colors font-bold">
+                Todos los episodios
+              </a>
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     )}
 
   </div>
