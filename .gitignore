@@ -26,3 +26,4 @@ pnpm-debug.log*
 .claude
 .prompts
 package-lock.json
+.ignore
