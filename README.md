@@ -49,9 +49,12 @@ Follow these steps to run the project locally:
    Create a `.env` file in the root directory with the following:
 
    ```env
+   PUBLIC_YOUTUBE_API_KEY=your_browser_restricted_youtube_api_key
    PUBLIC_SUPABASE_URL=your_supabase_url
    PUBLIC_SUPABASE_ANON_KEY=your_anonymous_key
    ```
+
+   `PUBLIC_YOUTUBE_API_KEY` is used by the browser to fetch the latest videos when the page loads. Restrict that key by HTTP referrer to your production domains in Google Cloud Console.
 
 4. **Start the development server**
 
