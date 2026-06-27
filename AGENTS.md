@@ -35,20 +35,24 @@ All code modifications and additions must strictly align with the project's fold
 ## 🛠️ 2. Development Rules & Best Practices
 
 ### 🌐 A. Internationalization (i18n)
+
 The project is bilingual (Spanish/English). Any component or page displaying text to the user must use the i18n translation system:
+
 1. **Do not hardcode text strings** directly in HTML elements.
 2. Add translation entries in [ui.ts](file:///Users/albertolicea00/Develop/cuban_influencer_projects/kristoff/src/i18n/ui.ts) under both `es` and `en` keys.
 3. In the Astro frontmatter of the file, retrieve translations using:
    ```astro
    ---
-   import { getLangFromUrl, useTranslations } from '../i18n/utils';
+   import { getLangFromUrl, useTranslations } from "../i18n/utils";
    const lang = getLangFromUrl(Astro.url);
    const t = useTranslations(lang);
    ---
-   <h1>{t('hero.title')}</h1>
+
+   <h1>{t("hero.title")}</h1>
    ```
 
 ### 🎨 B. Design System & Style Usage
+
 1. **Tailwind Usage:** Rely on Tailwind utility classes (`flex`, `grid`, `text-*`, `bg-*`, etc.) where possible.
 2. **Color Tokens:** Strictly reference the theme colors: `primary` (`#FF3B3B`), `secondary` (`#111111`), `accent` (`#FFD600`), and `background` (`#FFFFFF`). Do not use arbitrary colors unless strictly necessary.
 3. **Custom Component Classes:** Reuse classes from [global.css](file:///Users/albertolicea00/Develop/cuban_influencer_projects/kristoff/src/styles/global.css) for standard UI elements:
@@ -62,11 +66,13 @@ The project is bilingual (Spanish/English). Any component or page displaying tex
 5. Review [DESIGN.md](file:///Users/albertolicea00/Develop/cuban_influencer_projects/kristoff/DESIGN.md) for full style details, custom scrollbars, and keyframe animations (`float`, `marquee`).
 
 ### 🧩 C. Astro Components and Client Interactivity
+
 1. Properly separate frontmatter logic (TypeScript imports, translations, scraper fetches) from the template.
 2. Keep components small, modular, and focused on a single task. Always declare strict interfaces for `Props` when creating reusable components.
 3. For client-side interactivity, use standard client hydration directives (e.g. `client:load`, `client:visible`) or native Astro `<script>` tags inside components.
 
 ### 🛡️ D. Accessibility & SEO
+
 1. Ensure there is only **one** `<h1>` per page.
 2. Use HTML5 semantic markup (`<main>`, `<section>`, `<nav>`, `<header>`, `<footer>`).
 3. Include descriptive `alt` tags on all images.
@@ -77,6 +83,7 @@ The project is bilingual (Spanish/English). Any component or page displaying tex
 ## 🤖 3. Operational Rules for AI Agents
 
 When working inside this repository, keep in mind these environment and workflow constraints:
+
 1. **Do not make direct Git commits (`git commit` / `git push`)** unless the user explicitly requests it in the current prompt.
 2. **Code Integrity:** Maintain existing comments, type declarations, and docstrings that are unrelated to your current changes.
 3. **Validation:** Before declaring a task finished, build the project locally (`npm run build`) to verify that there are no TypeScript compiler errors or routing issues.

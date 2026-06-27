@@ -30,6 +30,7 @@ Contributions are welcome! For instructions on how to set up, run, and contribut
 This project is licensed under the **Apache License, Version 2.0**. However, this open-source license does not extend to the trademarks, logos, brand names, or personal imagery contained in this repository.
 
 For full details, please review:
+
 - [LICENSE](./LICENSE) — Terms and conditions for the source code.
 - [NOTICE](./NOTICE) — Standard Apache 2.0 attribution notice.
 - [TRADEMARKS.md](./TRADEMARKS.md) — Guidelines on trademarks, logos, and image assets.

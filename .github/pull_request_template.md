@@ -26,7 +26,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 ## 📸 Screenshots / Demos
 
-*If applicable, add screenshots or screen recordings to help explain your changes.*
+_If applicable, add screenshots or screen recordings to help explain your changes._
 
 ## ✅ Checklist
 
