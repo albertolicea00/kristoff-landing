@@ -1,0 +1,14 @@
+{
+	"retry": true,
+	"retryErrors": true,
+	"retryErrorsCount": 3,
+	"skip": [
+		"instagram\\.com",
+		"tiktok\\.com",
+		"twitch\\.tv",
+		"youtube\\.com",
+		"twitter\\.com",
+		"x\\.com"
+	],
+	"silent": true
+}

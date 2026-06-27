@@ -1,19 +1,40 @@
 {
-  "name": "kristoff-webpage",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.14.2",
-    "tailwindcss": "^3.4.10",
-    "typescript": "^5.5.4"
-  }
+	"name": "kristoff-webpage",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"check": "astro check",
+		"verify:links": "linkinator ./dist --config .linkinatorrc.json",
+		"verify:links:full": "linkinator ./dist --config .linkinatorrc.full.json",
+		"verify": "npm run lint && npm run format:check && npm run check && npm run build && npm run verify:links",
+		"verify:full": "npm run lint && npm run format:check && npm run check && npm run build && npm run verify:links:full",
+		"optimize:images": "python3 scripts/optimize_images.py"
+	},
+	"dependencies": {
+		"@astrojs/tailwind": "^5.1.0",
+		"astro": "^4.14.2",
+		"tailwindcss": "^3.4.10"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.3",
+		"@eslint/js": "^10.0.1",
+		"@typescript-eslint/parser": "^8.62.0",
+		"eslint": "^10.6.0",
+		"eslint-plugin-astro": "^1.7.0",
+		"linkinator": "^7.6.1",
+		"prettier": "^3.9.0",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-tailwindcss": "^0.8.0",
+		"typescript": "^5.5.4",
+		"typescript-eslint": "^8.62.0"
+	}
 }
