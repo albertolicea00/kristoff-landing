@@ -1,13 +1,13 @@
-# Contributing to Kristoff Kriollo Landing 🇨🇺
+# Contributing to Kristoff Kriollo Webpage 🇨🇺
 
-First off, thank you for considering contributing to the Kristoff Kriollo landing page! It's people like you that make this community great.
+First off, thank you for considering contributing to the Kristoff Kriollo webpage! It's people like you that make this community great.
 
 ## 🚀 How to Get Started
 
 1. **Fork** the repository on GitHub.
 2. **Clone** your fork locally:
    ```bash
-   git clone https://github.com/your-username/kristoff-landing.git
+   git clone https://github.com/albertolicea00/kristoff-webpage.git
    ```
 3. **Install dependencies**:
    ```bash
@@ -21,13 +21,16 @@ First off, thank you for considering contributing to the Kristoff Kriollo landin
    ```bash
    npm run dev
    ```
+6. **Build** the project to verify it compiles:
+   ```bash
+   npm run build
+   ```
 
 ## 🛠️ Tech Stack
 
 - [Astro](https://astro.build/) - Web framework.
 - [Tailwind CSS](https://tailwindcss.com/) - Styling.
 - [TypeScript](https://www.typescriptlang.org/) - Type safety.
-- [Supabase](https://supabase.com/) - Backend for floating notes.
 
 ## 📝 Contribution Guidelines
 
@@ -45,4 +48,10 @@ First off, thank you for considering contributing to the Kristoff Kriollo landin
 
 ---
 
-Made with ❤️ by the community.
+Vibed with ❤️ by [@albertolicea00](https://github.com/albertolicea00) & ...
+
+<a href="https://github.com/albertolicea00/kristoff-webpage/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=albertolicea00/kristoff-webpage" />
+</a>
+
+<sub>Made with [contrib.rocks](https://contrib.rocks).</sub>
