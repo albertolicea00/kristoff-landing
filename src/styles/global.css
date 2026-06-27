@@ -3,66 +3,70 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply font-body text-secondary bg-background;
-  }
+	body {
+		@apply bg-background font-body text-secondary;
+	}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-heading uppercase tracking-wide;
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-heading uppercase tracking-wide;
+	}
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-block font-heading text-xl md:text-2xl uppercase tracking-wider bg-primary text-white px-8 py-3 rounded hover:bg-red-700 transition-all shadow-lg active:scale-95;
-  }
+	.btn-primary {
+		@apply inline-block rounded bg-primary px-8 py-3 font-heading text-xl uppercase tracking-wider text-white shadow-lg transition-all hover:bg-red-700 active:scale-95 md:text-2xl;
+	}
 
-  .btn-secondary {
-    @apply inline-block font-heading text-xl md:text-2xl uppercase tracking-wider bg-background text-secondary border-2 border-secondary px-8 py-3 rounded hover:bg-secondary hover:text-white transition-all shadow-lg active:scale-95;
-  }
+	.btn-secondary {
+		@apply inline-block rounded border-2 border-secondary bg-background px-8 py-3 font-heading text-xl uppercase tracking-wider text-secondary shadow-lg transition-all hover:bg-secondary hover:text-white active:scale-95 md:text-2xl;
+	}
 
-  .btn-accent {
-    @apply inline-block font-heading text-xl md:text-2xl uppercase tracking-wider bg-accent text-secondary px-8 py-3 rounded hover:bg-yellow-500 transition-all shadow-lg active:scale-95;
-  }
+	.btn-accent {
+		@apply inline-block rounded bg-accent px-8 py-3 font-heading text-xl uppercase tracking-wider text-secondary shadow-lg transition-all hover:bg-yellow-500 active:scale-95 md:text-2xl;
+	}
 
-  .section-title {
-    @apply text-5xl md:text-7xl font-bold mb-8 md:mb-12 text-center text-primary;
-  }
+	.section-title {
+		@apply mb-8 text-center text-5xl font-bold text-primary md:mb-12 md:text-7xl;
+	}
 }
 
 /* Scrollbar styles to look more modern */
 ::-webkit-scrollbar {
-  width: 10px;
+	width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+	background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ff3b3b;
-  border-radius: 5px;
+	background: #ff3b3b;
+	border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #cc0000;
+	background: #cc0000;
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0px) rotate(var(--tw-rotate, 0deg));
-  }
-  100% {
-    transform: translateY(-20px) rotate(var(--tw-rotate, 0deg));
-  }
+	0% {
+		transform: translateY(0px) rotate(var(--tw-rotate, 0deg));
+	}
+	100% {
+		transform: translateY(-20px) rotate(var(--tw-rotate, 0deg));
+	}
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
 }
