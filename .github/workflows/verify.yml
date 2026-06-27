@@ -1,0 +1,44 @@
+name: Verify Code Quality
+
+on:
+  workflow_dispatch:
+    inputs:
+      check_type:
+        description: "Type of verification to run"
+        required: true
+        default: "full"
+        type: choice
+        options:
+          - "quick"
+          - "full"
+
+jobs:
+  verify:
+    name: Code Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run verification checks
+        run: |
+          if [ "${{ github.event.inputs.check_type }}" = "quick" ]; then
+            pnpm verify
+          else
+            pnpm verify:full
+          fi
