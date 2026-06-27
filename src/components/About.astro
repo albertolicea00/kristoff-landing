@@ -4,14 +4,11 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
-const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
-
 // The text is managed from i18n/ui.ts directly since editing is disabled
 let bioContent = t('about.description');
 ---
 
-<section id="about" class="py-24 bg-secondary text-white relative overflow-hidden" data-sb-url={supabaseUrl} data-sb-key={supabaseKey}>
+<section id="about" class="py-24 bg-secondary text-white relative overflow-hidden">
   <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
   <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-accent rounded-full filter blur-[100px] opacity-20"></div>
 
@@ -90,11 +87,6 @@ let bioContent = t('about.description');
 </section>
 
 <script>
-  const aboutSection = document.getElementById('about');
-  const SB_URL = aboutSection?.dataset.sbUrl || '';
-  const SB_KEY = aboutSection?.dataset.sbKey || '';
-  const sbConfigured = SB_URL.length > 10 && SB_KEY.length > 10;
-
   const COOLDOWN_KEY = 'bio_last_edit_ts';
 
   function canEditToday(): boolean {
@@ -170,24 +162,7 @@ let bioContent = t('about.description');
       saveBtn.textContent = 'Guardando...';
       (saveBtn as HTMLButtonElement).disabled = true;
 
-      let saved = false;
-      if (sbConfigured) {
-        try {
-          const res = await fetch(`${SB_URL}/rest/v1/bio?id=eq.1`, {
-            method: 'PATCH',
-            headers: {
-              'apikey': SB_KEY,
-              'Authorization': `Bearer ${SB_KEY}`,
-              'Content-Type': 'application/json',
-              'Prefer': 'return=minimal'
-            },
-            body: JSON.stringify({ content: newContent, last_edited_at: new Date().toISOString() })
-          });
-          saved = res.ok;
-        } catch(e) { saved = false; }
-      } else {
-        saved = true; // demo mode
-      }
+      let saved = true; // demo mode
 
       if (saved) {
         bioText.textContent = newContent;

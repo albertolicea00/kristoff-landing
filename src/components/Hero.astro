@@ -4,18 +4,16 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
-const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
 ---
 
-<section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-secondary" data-sb-url={supabaseUrl} data-sb-key={supabaseKey}>
+<section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-secondary">
   <!-- Background Pattern -->
   <div class="absolute inset-0 z-0 opacity-20">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/30 to-secondary transform scale-150"></div>
     <div class="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] animate-pulse"></div>
   </div>
 
-  <!-- Floating Notes Container (populated by JS from Supabase) -->
+  <!-- Floating Notes Container (populated by JS) -->
   <div id="floating-notes" class="absolute inset-0 z-[1] pointer-events-none overflow-hidden"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
@@ -126,13 +124,7 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
 
   checkTwitchLive();
 
-  // ===== FLOATING NOTES (Supabase) =====
-  const heroEl = document.getElementById('hero');
-  const SUPABASE_URL = heroEl?.dataset.sbUrl || '';
-  const SUPABASE_ANON_KEY = heroEl?.dataset.sbKey || '';
-
-  const isSupabaseConfigured = SUPABASE_URL.length > 10 && SUPABASE_ANON_KEY.length > 10;
-
+  // ===== FLOATING NOTES =====
   const demoNotes = [
     { text: 'Kristoff el mejor 🇨🇺🔥', username: 'ElCubano' },
     { text: 'Miami se siente 🌴', username: null },
@@ -149,44 +141,11 @@ const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
   interface NoteData { text: string; username: string | null; }
 
   async function fetchNotes(): Promise<NoteData[]> {
-    if (!isSupabaseConfigured) return demoNotes;
-    
-    try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/notes?select=text,username&order=created_at.desc&limit=30`, {
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-        }
-      });
-      const data = await res.json();
-      if (Array.isArray(data) && data.length > 0) {
-        return data.map((n: any) => ({ text: n.text, username: n.username || null }));
-      }
-    } catch(e) { /* fallback */ }
     return demoNotes;
   }
 
   async function submitNote(text: string, username: string | null) {
-    if (!isSupabaseConfigured) return true;
-    
-    try {
-      const body: any = { text };
-      if (username) body.username = username;
-      
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/notes`, {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify(body)
-      });
-      return res.ok;
-    } catch(e) {
-      return false;
-    }
+    return true;
   }
 
   function createFloatingNote(noteData: NoteData, container: HTMLElement) {
