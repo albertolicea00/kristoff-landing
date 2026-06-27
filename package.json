@@ -1,7 +1,7 @@
 {
 	"name": "kristoff-webpage",
 	"type": "module",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
@@ -15,8 +15,8 @@
 		"check": "astro check",
 		"verify:links": "linkinator ./dist --config .linkinatorrc.json",
 		"verify:links:full": "linkinator ./dist --config .linkinatorrc.full.json",
-		"verify": "npm run lint && npm run format:check && npm run check && npm run build && npm run verify:links",
-		"verify:full": "npm run lint && npm run format:check && npm run check && npm run build && npm run verify:links:full",
+		"verify": "pnpm run lint && pnpm run format:check && pnpm run check && pnpm run build && pnpm run verify:links",
+		"verify:full": "pnpm run lint && pnpm run format:check && pnpm run check && pnpm run build && pnpm run verify:links:full",
 		"optimize:images": "python3 scripts/optimize_images.py"
 	},
 	"dependencies": {
