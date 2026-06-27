@@ -15,7 +15,7 @@ All code modifications and additions must strictly align with the project's fold
     - English: Mirror routes are placed under the `en/` folder (e.g., `src/pages/en/index.astro`).
 - 📁 `src/components/`
   - **Modular Astro Components**. Must be self-contained and reusable.
-  - Examples: `Hero.astro`, `About.astro`, `Videos.astro`, `Community.astro`, `Projects.astro`, `Support.astro`, `Collabs.astro`, `Header.astro`, `Footer.astro`.
+  - Examples: `Hero.astro`, `Videos.astro`, `Community.astro`, `Projects.astro`, `Support.astro`, `Collabs.astro`, `Header.astro`, `Footer.astro`.
 - 📁 `src/layouts/`
   - Contains [Layout.astro](file:///Users/albertolicea00/Develop/cuban_influencer_projects/kristoff/src/layouts/Layout.astro), which wraps all pages. Defines the base HTML markup, loads Google Fonts (Anton + Bebas Neue + Inter + Poppins), sets SEO meta tags, and injects global styles.
 - 📁 `src/i18n/`

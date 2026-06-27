@@ -53,9 +53,6 @@ export const ui = {
 
 		"videos.title": "Latest Videos",
 		"videos.watch": "Watch now",
-		"about.title": "About Kristoff",
-		"about.description":
-			"Christopher Gómez, known as Kristoff Kriollo, is a Cuban content creator born in Matanzas. His videos mix local humor, social critique, and real life experiences of Cubans inside and outside the island.",
 		"community.title": "Community",
 		"community.followers": "370K+",
 		"community.followers.label": "Followers",
