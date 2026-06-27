@@ -8,7 +8,7 @@
 
 ## 📖 About the Project
 
-This is the community web-page for **Kristoff Kriollo** (Christopher Gómez), created and developed by [Alberto Licea](https://github.com/albertolicea00). The site is designed to centralize his content, community, projects, and commercial collaborations.
+This is the community web-page for **Kristoff Kriollo** (Christopher Gómez). The site is designed to centralize his content, community, projects, and commercial collaborations.
 
 ### ✨ Features
 
