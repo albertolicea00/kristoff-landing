@@ -36,6 +36,10 @@ For full details, please review:
 
 ---
 
-<div align="center">
-  Made with ❤️ by [Alberto Licea](https://github.com/albertolicea00) and the Cuban community. 🇨🇺
-</div>
+Vibed with ❤️ by [@albertolicea00](https://github.com/albertolicea00) & ...
+
+<a href="https://github.com/albertolicea00/kristoff-webpage/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=albertolicea00/kristoff-webpage" />
+</a>
+
+<sub>Made with [contrib.rocks](https://contrib.rocks).</sub>
