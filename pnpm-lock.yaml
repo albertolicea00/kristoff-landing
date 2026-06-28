@@ -33,6 +33,9 @@ importers:
       eslint-plugin-astro:
         specifier: ^1.7.0
         version: 1.7.0(eslint@10.6.0(jiti@1.21.7))
+      globals:
+        specifier: ^17.7.0
+        version: 17.7.0
       linkinator:
         specifier: ^7.6.1
         version: 7.6.1
@@ -1390,6 +1393,10 @@ packages:
 
   globals@16.5.0:
     resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+    engines: {node: '>=18'}
+
+  globals@17.7.0:
+    resolution: {integrity: sha512-Czmyns5dUsq4seFBR/Kdydhmo8y9kC79hiSkPn0YcGtNnYWnrgt0vjrSjx9tspoDGWm2CMarffRuLjM4xUz8xg==}
     engines: {node: '>=18'}
 
   graceful-fs@4.2.11:
@@ -4047,6 +4054,8 @@ snapshots:
       path-scurry: 2.0.2
 
   globals@16.5.0: {}
+
+  globals@17.7.0: {}
 
   graceful-fs@4.2.11: {}
 
