@@ -1,11 +1,11 @@
 ---
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+// import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+// const lang = getLangFromUrl(Astro.url);
+// const t = useTranslations(lang);
 
 // The text is managed from i18n/ui.ts directly since editing is disabled
-const bioContent = t("about.description");
+// const bioContent = t("about.description");
 ---
 
 <section
@@ -27,7 +27,7 @@ const bioContent = t("about.description");
 			<h2
 				class="mb-4 font-heading text-5xl tracking-wide text-primary drop-shadow-md md:text-7xl"
 			>
-				{t("about.title")}
+				<!-- {t("about.title")} -->
 			</h2>
 			<div class="mx-auto mb-4 h-2 w-24 bg-accent"></div>
 			<p class="font-body text-sm text-gray-500">
@@ -46,7 +46,7 @@ const bioContent = t("about.description");
 					id="bio-text"
 					class="whitespace-pre-line font-body text-xl leading-relaxed text-gray-200 md:text-2xl"
 				>
-					{bioContent}
+					<!-- {bioContent} -->
 				</p>
 
 				<div

@@ -17,9 +17,6 @@ export const ui = {
 
 		"videos.title": "Últimos Videos",
 		"videos.watch": "Ver ahora",
-		"about.title": "Sobre Kristoff",
-		"about.description":
-			"Kristoff Kriollo (Christopher Gómez para los trámites) es el Alto Comisionado de los Problemas Cubanos™: especialista en convertir traumas nacionales en chistes y chistes en traumas nuevos.",
 		"community.title": "Comunidad",
 		"community.followers": "370K+",
 		"community.followers.label": "Seguidores",
